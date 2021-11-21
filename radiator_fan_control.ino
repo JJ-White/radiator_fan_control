@@ -1,6 +1,6 @@
 #define debug
 
-#define ntc_thresh 400
+#define ntc_thresh 350
 #define pwm_min 100
 
 #define ntc_pin A0
