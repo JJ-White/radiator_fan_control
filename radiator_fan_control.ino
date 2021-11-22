@@ -21,7 +21,7 @@ void setup() {
 }
 
 void loop() {
-  ntc = ((ntc * 7) + analogRead(ntc_pin)) / 8;
+  ntc = ((ntc * 15) + analogRead(ntc_pin)) / 16;
 
 #ifdef debug
   Serial.print("pwm: ");
