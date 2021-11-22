@@ -1,7 +1,7 @@
-#define debug
+//#define debug
 
-#define ntc_thresh 350
-#define pwm_min 100
+#define ntc_thresh 400
+#define pwm_min 30
 
 #define ntc_pin A0
 #define pot_pin A1
@@ -21,9 +21,12 @@ void setup() {
 }
 
 void loop() {
-  ntc = ((ntc * 4) + analogRead(ntc_pin)) / 5;
+  ntc = ((ntc * 7) + analogRead(ntc_pin)) / 8;
 
 #ifdef debug
+  Serial.print("pwm: ");
+  Serial.print(map(analogRead(pot_pin), 1023, 0, pwm_min, 255));
+  Serial.print(" ntc: ");
   Serial.println(ntc);
 #endif
 
