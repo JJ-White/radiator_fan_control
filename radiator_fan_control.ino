@@ -2,6 +2,7 @@
 
 #define ntc_thresh 400
 #define pwm_min 30
+#define sensor_avg_weight 30
 
 #define ntc_pin A0
 #define pot_pin A1
@@ -21,7 +22,7 @@ void setup() {
 }
 
 void loop() {
-  ntc = ((ntc * 15) + analogRead(ntc_pin)) / 16;
+  ntc = ((ntc * (sensor_avg_weight - 1)) + analogRead(ntc_pin)) / sensor_avg_weight;
 
 #ifdef debug
   Serial.print("pwm: ");
