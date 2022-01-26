@@ -1,6 +1,6 @@
-//#define debug
+#define debug
 
-#define ntc_thresh 400
+#define ntc_thresh 450
 #define pwm_min 30
 #define sensor_avg_weight 30
 
