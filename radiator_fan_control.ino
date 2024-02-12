@@ -1,6 +1,6 @@
 #define debug
 
-#define ntc_thresh 400
+#define ntc_thresh 500
 #define ntc_hyst 10
 #define ntc_max 260 // 300~50c, 260~55c 
 #define pwm_min 30
@@ -32,6 +32,8 @@ void loop() {
   ntc = ((ntc * (sensor_avg_weight - 1)) + analogRead(ntc_pin)) / sensor_avg_weight;
   pwm_max = map(analogRead(pot_pin), 1023, 0, pwm_min, 255);
   pwm_val = map(ntc, ntc_thresh, ntc_max, pwm_min, pwm_max);
+  if (pwm_val < pwm_min)
+    pwm_val = pwm_min;
 
 #ifdef debug
   Serial.print("ntc: ");
