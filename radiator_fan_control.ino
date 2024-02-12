@@ -34,6 +34,8 @@ void loop() {
   pwm_val = map(ntc, ntc_thresh, ntc_max, pwm_min, pwm_max);
   if (pwm_val < pwm_min)
     pwm_val = pwm_min;
+  else if (pwm_val > pwm_max)
+    pwm_val = pwm_max;
 
 #ifdef debug
   Serial.print("ntc: ");
